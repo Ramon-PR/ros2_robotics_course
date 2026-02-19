@@ -1,11 +1,31 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "ros2-robotics-course"
-version = "0.1.0"
-description = "Notebooks for the ROS2 Robotics Course"
+name = "ros2_robotics_course"
+dynamic = ["version"]
+description = "Learn ROS2 Robotics from scratch — from installation to deep learning with camera"
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "ipykernel>=7.2.0",
-    "jupyter>=1.1.1",
-    "nbdev>=3.0.12",
-]
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "Ramon-PR", email = "pozueloruizramon@gmail.com"}]
+keywords = ['ros2', 'robotics', 'opencv', 'deep-learning', 'nbdev', 'jupyter', 'notebook', 'python']
+classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
+dependencies = ['ultralytics', 'opencv-python-headless', 'numpy', 'nbdev']
+
+[project.urls]
+Repository = "https://github.com/Ramon-PR/ros2_robotics_course"
+Documentation = "https://Ramon-PR.github.io/ros2_robotics_course"
+
+[project.entry-points.nbdev]
+ros2_robotics_course = "ros2_robotics_course._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "ros2_robotics_course.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["ros2_robotics_course"]
+
+[tool.nbdev]
+branch = 'master'
